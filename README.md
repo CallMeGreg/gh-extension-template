@@ -36,6 +36,13 @@ After creating your repository, replace the template name in a few places:
 
 A find/replace of `extension-template` (and the `CallMeGreg` owner) covers the code; then swap the example `orgs`/`repos` commands for your own.
 
+### Private repository notes
+
+Two governance features are limited for **user-owned private repositories** and are configured to degrade gracefully:
+
+- **Release attestations** — `generate_attestations` is set to `false` in [`release.yml`](.github/workflows/release.yml). Set it to `true` once the repo is public or org-owned (with GitHub Advanced Security).
+- **Dependency Review** — the [`dependency-review.yml`](.github/workflows/dependency-review.yml) job is guarded with `if: ${{ github.event.repository.private == false }}` and skips while the repo is private. It runs automatically once the repo is public (or org-owned with GHAS).
+
 ## Prerequisites
 
 - [Go](https://go.dev/dl/) — see the version pinned in `go.mod`
@@ -106,7 +113,7 @@ go-gh                   | PUBLIC     | Go       | 435
 ├── .github/
 │   ├── workflows/
 │   │   ├── release.yml            # Auto-versioned precompiled releases
-│   │   └── dependency-review.yml  # Blocks vulnerable dependencies on PRs
+│   │   └── dependency-review.yml  # Blocks vulnerable dependencies on PRs (public/GHAS only)
 │   ├── instructions/              # Language-specific guidance for Copilot
 │   ├── copilot-instructions.md    # Repo-wide guidance for Copilot
 │   ├── dependabot.yml             # Weekly Go module + Actions updates
