@@ -141,8 +141,12 @@ Edit the tape to script whatever commands best show off your extension.
 Releases are automated by [`.github/workflows/release.yml`](.github/workflows/release.yml):
 
 1. Open a PR and check a box in the **Release Type** section of the PR description (Major / Minor / Patch).
-2. When the PR merges to `main`, the workflow reads that box, computes the next semantic version, tags it, and runs [`cli/gh-extension-precompile`](https://github.com/cli/gh-extension-precompile) to build cross-platform binaries with build provenance attestations.
+2. When the PR merges to `main`, the workflow reads that box, computes the next semantic version, tags it, and runs [`cli/gh-extension-precompile`](https://github.com/cli/gh-extension-precompile) to build cross-platform binaries.
 3. Dependabot PRs default to a patch release.
+
+> **Note:** The first push to `main` (creating the repo from this template) has no PR, so it defaults to a patch release and cuts `v0.0.1` automatically.
+
+> **Build provenance attestations** are disabled by default (`generate_attestations: false`) because they are not available for user-owned private repositories. Once your repo is public or organization-owned, set it to `true` in [`release.yml`](.github/workflows/release.yml).
 
 Users can then install your extension with `gh extension install <owner>/gh-my-extension`.
 
