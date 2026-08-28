@@ -1,8 +1,8 @@
 module github.com/CallMeGreg/gh-extension-template
 
-go 1.23.0
+go 1.25.0
 
-require github.com/cli/go-gh/v2 v2.12.1
+require github.com/cli/go-gh/v2 v2.13.0
 
 require (
 	atomicgo.dev/cursor v0.2.0 // indirect
