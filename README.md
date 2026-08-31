@@ -2,7 +2,7 @@
 
 A template repository for building **precompiled [GitHub CLI](https://cli.github.com) extensions in Go**.
 
-It is scaffolded with `gh extension create --precompiled=go` and wired up with the libraries the GitHub CLI ecosystem relies on:
+It is scaffolded with `gh extension create --precompiled=go` and wired up with a preferred, opinionated set of libraries:
 
 | Concern | Library |
 | ------- | ------- |
