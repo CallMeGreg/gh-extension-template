@@ -9,11 +9,6 @@ permissions:
 jobs:
   dependency-review:
     runs-on: ubuntu-latest
-    # Dependency review requires GitHub Advanced Security, which is not
-    # available for user-owned private repositories. Skip on private repos so
-    # PRs are not blocked; this job runs automatically once the repo is public
-    # (or org-owned with GHAS).
-    if: ${{ github.event.repository.private == false }}
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

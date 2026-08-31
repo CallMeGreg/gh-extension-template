@@ -109,7 +109,4 @@ jobs:
       - uses: cli/gh-extension-precompile@76961aa3bd1123d0a6fd42d0a41aca0696937c39 # v2.2.0
         with:
           go_version_file: go.mod
-          # Build provenance attestations are not available for user-owned
-          # private repositories. Leave this false while the repo is private;
-          # set it to true once the repo is public or org-owned.
-          generate_attestations: false
+          generate_attestations: true
